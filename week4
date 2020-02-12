@@ -1,0 +1,21 @@
+//เรื่อง function part 1
+#include <stdio.h> 
+#include <stdlib.h> 
+
+long long int find(long long int decimal_number)                       // long lont int เป็นการบอกประเภทของฟังก์ชั่น
+{ 
+    if (decimal_number == 0)  
+        return 0;                                                       // เมื่อเจอคำสั่ง return ในฟังก์ชั่นลำดับการทำงานของโปรเเกรมจะกลับไปทำงานตรงที่ฟังก์ชั่นถูกเรียกใช้
+    else
+        return (decimal_number % 2 + 10 *  find(decimal_number / 2)); 
+} 
+   
+long long int main() 
+{ 
+    char x_str[10000];
+    fgets(x_str,10000,stdin);
+    long long int x;
+    x = atoll (x_str); 
+    printf("%lld", find(x));                                           // เรียกใช้ฟังก์ชั่น โดย x เเทนลงใน decimal_number
+    return 0; 
+} 
