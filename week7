@@ -1,0 +1,16 @@
+// เรื่อง pointer
+#include <stdio.h>
+#include <stdlib.h>
+// void *malloc(size_n);                        // เป็นฟังก์ชั้นการจองพื้นที่
+// int *data;
+// data = (int *)malloc(1000 * size of(int));   // เป็นการสร้างห้องให้ data
+int main()
+{
+    int c = 5;
+    int *p;                                     // เป็นการประกาศ pointer ประเภท int
+
+    p = &c;                                     // เครื่องหมาย & เป็นการชี้เป้า
+    printf("%d\n" , c);                         
+    printf("%d\n" , p);                         // ในที่นี้ c มีค่าเท่ากับ 5 เเละ P ชี้เป้าไปที่ c ดังนั้น p จึงมีค่าท่ากับ 5 ด้วย
+}
+
