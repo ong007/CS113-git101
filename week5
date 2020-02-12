@@ -1,0 +1,22 @@
+//เรื่อง function part 2
+#include <stdio.h>
+
+int value = 10;                                    // เป็นการประกาศ global ว่า value มีค่า = 10
+
+void fun_c(int input)                              // เป็นการกำหนดฟังก์ชั่น
+{
+    int value;
+
+    value = input;
+    printf("func_1: value = %d\n" , value);
+}
+
+int main()
+{
+    printf("main_1: value = %d\n" , value);       // เป็นการปริ้นค่า value ที่ global คือ 10 
+    func_1(1234);                                 // มีการเรียกใช้ฟังก์ชั่น โดยจะเปลี่ยนค่า valueชั่วคราวคือ 1234
+    printf("main_2: value = %d\n" , value;)       // ปริ้นค่าเดิมที่ประกาศที่ global ซึ่งไม่มีการเปลี่ยนค่า value คือ 10   
+    
+    int number = 10;                              // เป็นการประกาศภายใน local ซึ่งมีการเปลี่ยนเเปลงค่าได้ตลอด                        
+    printf("%d" , number);                         
+}
