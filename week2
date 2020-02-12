@@ -1,0 +1,38 @@
+//เรื่อง Type, Operators and Expression
+#include <stdio.h>
+#include <stdlib.h>                                         //คือฟังก์ชั่นที่เรียกใช้ฟังก์ชั่นประเภท getchar
+int main()
+                                                            // char ใช้หน่วยความจำ 1 ไบท์
+                                                            // int ใช้หน่วยความจำ 4 ไบท์
+                                                            // float ใช้หน่วยความจำ 4ไบท์
+                                                            // double ใช้หน่วยความจำ 8 ไบท์
+                                                            // sizeof เป็นคำสั่งถามขนาด
+    char level_str[4], year_str[4];                         // เป็นการกำหนดขนาดให้ level_str เเละ year_str ว่าสามารถรับได้กี่ตัว
+    int level, year;                                        // บอกประเภทของ level เเละ year ว่าเป็นประเภท int
+
+    printf("school level of student: ");
+    fgets(level_str, 4, stdin);                             // เป็นการรับค่าเเละกำหนดขนาด
+
+    printf("how many of learning: ");
+    fgets(year_str, 4, stdin);
+
+    level = atoi(level_str);                                // คำสัง atoi เป็นการเปลี่ยน character เป็น int , atof เป็นการเปลี่ยน character เป็น float  
+    year = atoi(year_str);
+
+    if (level < 4 && year >3 || level>=4 && year>=1)        // relational operater
+                                                            // && คือ and
+                                                            // || คือ or
+                                                            // > คือ มากกว่า
+                                                            // < คือ น้อยกว่า
+                                                            // <= คือ น้อยกว่าเท่ากับ
+                                                            // >= คือ มากกว่าเท่ากับ
+                                                            // == คือ เท่ากับ
+                                                            // != คือไม่เท่ากับ
+    {
+        printf("YES");
+    }
+    else 
+    {
+        printf("NO");
+    }
+}
