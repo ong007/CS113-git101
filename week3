@@ -1,0 +1,41 @@
+//เรื่อง Control Flow
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>                                    // เป็นคำสั่งเรียกใช้ฟังก์ชั่นทางคณิตศาสตร์
+
+int fibo(int n)                                      // เป็นการนิยามฟังก์ชั่น fibo โดยเมื่อเรียกใช้ฟังก์ชั่นภายใน global จะมีการนำตัวเเปลมาเเทนใน int n
+{
+    
+float y = 1+sqrt(5);
+float z = 1-sqrt(5);
+float x = (pow(y,n)-pow(z,n))/(pow(2,n)*sqrt(5));
+return x;                                            // คำสั่ง return เป็นการคืนค่าตัวเเปลที่กำหนด
+
+}
+
+void main()
+{
+    char input_n[5];
+    fgets(input_n, 5, stdin);
+    int n, i;
+    n = atoi(input_n);
+    for (i = 0;  i<=n ; i++)                        // เป็นการตั้งลูป โดยการใช้ for คือ (start;stop;step)ตามด้วย{...}สำหรับเขียนเป็น block  
+                                                    // มีคำสั่งสำหรับการเขียนลูปอีกคือ while โดย การเขียน while True คือ while (1) เมื่อต้องการหยุดการทำงานให้ใช้คำสั่ง break
+    {
+        
+        printf("F(%d) = %d\n",i,fibo(i));           // เป็นการเรียกใช้ฟังก์ชั่น fibo
+
+    }
+}
+
+
+switch (expression)                                 //switch   คือการตรวจสอบเงื่อนไขเมื่อเข้าเงื่อนไขก็จะมาดูเงื่อนไขใน case ว่าเข้า case ไหน
+{
+    case (เงื่อนไข 1):
+        คำสั่ง
+    case (เงื่อนไข 2):
+        คำสั่ง
+    default:                                        //default จะมีหรือไม่มีก็ได้
+        คำสั่ง
+}                                                    
+
