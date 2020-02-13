@@ -1,0 +1,27 @@
+// เรื่อง git
+- ตรวจสอบว่า Git ใช้งานได้ โดยเปิด Command Prompt / Terminal แล้วพิมพ์คำสั่ง
+git --version // ของ window ต้องเป็นเวอร์ชั่นปัจจุบัน 2.25 
+- สร้าง directory ที่จะเก็บงาน
+- ทำการ git init ตอนเริ่มต้นทำโปรเเกรม
+- ทำการตรวจสถานะ 
+  git status
+- ทำการเพิ่มไฟล์เพื่อพร้อม commit  
+  git add a.txt
+- ตั้งค่าชื่อและอีเมลเพื่อระบุตัวผู้ commit
+  git config user.name "Your Name"
+  git config user.email "yourmail@ku.th"
+  **   ถ้าเป็นเครื่องส่วนตัว ให้ใส่ option --global (global) ด้วย
+	   git config --global user.name "Your Name"
+	   git config --global user.email "yourmail@ku.th"
+- เชื่อม local repository (git repo ในเครื่องเรา) กับ github ด้วยคำสั่ง 
+  git remote add <ชื่อ remote เช่น origin> <git url>
+- ทำการ commit ไฟล์
+  git commit -m "Add a.txt"
+- เมื่อเชื่อม local ในเครื่อง กับ remote ที่ github ได้แล้ว ให้ส่งไฟล์และประวัติไปเก็บที่ github ด้วยคำสั่ง git push
+  git push -u origin master
+- refresh หน้า github ดูว่าโปรเเกรมขึ้นไม๊
+
+
+
+
+ 
