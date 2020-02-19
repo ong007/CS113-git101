@@ -1,0 +1,130 @@
+// เรื่อง git-2 branch
+- คำสั่งสำหรับการสร้าง Branch
+    git branch <branch-name>
+- ตรวจสอบว่ามี Branch ใดบ้าง ด้วยคำสั่ง
+    git branch
+- เปลี่ยน Branch ไปที่ feature ด้วยคำสั่ง
+    git checkout feature
+        เพิ่มไฟล์ feature1.txt
+        git status                                                                 // เช็คสถานะบอกว่าเรา branch ไว้ที่ไหน
+        git add feature1.txt
+        git commit -m "Add feature1.txt in branch feature"
+
+        git checkout master           
+        เพิ่มไฟล์ master1.txt
+        git status
+        git add master1.txt
+        git commit -m "Add master1.txt in branch master"
+-  git log adog ดู Checkpoint ทั้งหมด
+    git log --all --decorate --oneline --graph
+- push master ขึ้น github 
+    git checkout master
+	git log --all --decorate --oneline --graph
+	git push origin master
+    git log --all --decorate --oneline --graph
+
+- push feature ขึ้น github  ใช้ git log adog ดู Checkpoint ทั้งหมด สังเกตสิ่งที่เปลี่ยนแปลง
+    git checkout feature
+	git log --all --decorate --oneline --graph
+	git push origin feature
+ 	git log --all --decorate --oneline --graph
+
+- เปลี่ยนไปที่ Branch ปลายทางก่อน (master)
+	git checkout master
+    รวม Branch (merge) feature ให้ไปอยู่ใน master
+	git merge feature
+
+- สังเกต git log adog จะเห็นเส้นของการรวม Branch
+	git log --all --decorate --oneline --graph
+
+-  push master ขึ้น github
+    git push origin master
+
+การ Pull แบบไม่มี Conflict
+
+-  ให้ clone git repository มาไว้อีกเครื่องหนึ่ง หรือ directory ใหม่ เช่น git102
+    cd ..
+    git clone <git-url> git102
+	cd git102
+-  เพิ่มไฟล์ new-1.txt ใน directory ใหม่ (git102) แล้ว push ไปที่ github
+    git add new-1.txt
+    git commit -m "add new-1.txt by user2"
+    git push origin master
+
+- กลับมาที่เครื่องเก่า หรือ directory เก่า แล้ว pull การเปลี่ยนแปลงลงมาที่ local repository
+	cd ..
+	cd git101
+	ls -l						                                               // ไม่มีไฟล์ new-1.txt
+	git pull origin master		                                               // ดึงการเปลี่ยนแปลงจาก branch master
+	ls -l						                                               // มีไฟล์ new-1.txt
+
+การ Merge แบบมี Conflict
+
+- สร้าง Branch feature2 และสลับไป Branch
+    git checkout -b feature2
+- ให้แก้ไฟล์ b.txt ใน branch feature2 และ master ในบรรทัดเดียวกัน
+    git checkout feature2
+    แก้ไขไฟล์ b.txt บรรทัดแรก ให้มีข้อความหนึ่ง
+    git add b.txt
+    git commit -m "update b.txt first line in branch feature2"
+    git log --all --decorate --oneline --graph
+
+    git checkout master
+    แก้ไขไฟล์ b.txt บรรทัดแรก ให้มีข้อความสองที่แตกต่างจากข้อความหนึ่ง
+    git add b.txt
+    git commit -m "update b.txt first line in branch master"
+    git log --all --decorate --oneline --graph
+- merge branch feature2 เข้าไปใน branch master
+    git checkout master
+	git merge feature2
+- หลังจากแก้ไข conflict เสร็จแล้ว ให้ commit การ merge
+    git add b.txt
+	git status
+	git commit -m "merge branch 'feature2' and resolve conflict"
+	git log --all --decorate --oneline --graph
+- push ขึ้น github
+    git push origin master
+    git log --all --decorate --oneline --graph
+
+การ Pull แบบมี Conflict
+
+-  ในเครื่องใหม่ หรือ directory ใหม่ ให้แก้ไขข้อมูลใน new-1.txt แล้ว commit และ push ไปที่ github
+    cd ..
+    cd git102
+	git pull origin master
+	แก้ไขไฟล์ new-1.txt ใน git102
+	git status
+	git add new-1.txt
+	git status
+	git commit -m "update new-1.txt by user2"
+	git log --all --decorate --oneline --graph
+	git push origin master
+    git log --all --decorate --oneline --graph
+
+-  ในเครื่องเก่า หรือ directory เก่า ให้แก้ไขข้อมูลใน new-1.txt 
+    cd ..
+    cd git101
+    แก้ไขไฟล์ new-1.txt ให้มีข้อความใหม่
+    git status
+	git add new-1.txt
+	git status
+	git commit -m "update new-1.txt too"
+	git log --all --decorate --oneline --graph
+
+- ก่อน Push ให้ Pull origin/master จะพบว่าการ Pull นี้ มี conflict เกิดขึ้น                            // ให้แก้ไข conflict ในไฟล์ new-1.txt จากนั้นสร้าง commit แล้ว push ไปที่ github
+    git pull origin master
+    git status
+    แก้ไข conflict ในไฟล์ new-1.txt
+    git add new-1.txt
+    git status
+    git commit -m "merge and resolve conflict in new-1.txt"
+	git log --all --decorate --oneline --graph
+	git push origin master
+	git log --all --decorate --oneline --graph
+- ที่เครื่องใหม่ หรือ directory ใหม่ จะเห็นว่า Checkpoint ตามหลัง origin/master อยู่
+    cd ..
+	cd git102
+	git log --all --decorate --oneline --graph
+    ให้ pull ลงมา                                                                               // สังเกตว่า ไม่เกิด conflict เพราะไม่มีการแก้ไขอะไรเพิ่มเติม
+    git pull origin master
+    git log --all --decorate --oneline --graph
