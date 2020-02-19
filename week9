@@ -13,6 +13,8 @@
         git checkout master           
         เพิ่มไฟล์ master1.txt
         git status
+
+        
         git add master1.txt
         git commit -m "Add master1.txt in branch master"
 -  git log adog ดู Checkpoint ทั้งหมด
